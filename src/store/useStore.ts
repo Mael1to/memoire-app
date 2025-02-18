@@ -30,6 +30,7 @@ interface AppState {
   addFlashcard: (themeId: number, front: string, back: string) => void;
   reviewFlashcard: (id: number, success: boolean) => void;
   deleteFlashcard: (id: number) => void;
+  deleteTheme: (id: number) => void;
 }
 
 export const useStore = create<AppState>((set) => ({
@@ -82,5 +83,14 @@ export const useStore = create<AppState>((set) => ({
         const newFlashcards = state.flashcards.filter((card) => card.id !== id);
         saveState("flashcards", newFlashcards);
         return { flashcards: newFlashcards };
+      }),
+    
+      deleteTheme: (id: number) =>
+      set((state) => {
+        const newThemes = state.themes.filter((theme) => theme.id !== id);
+        const newFlashcards = state.flashcards.filter((card) => card.themeId !== id);
+        saveState("themes", newThemes);
+        saveState("flashcards", newFlashcards);
+        return { themes: newThemes, flashcards: newFlashcards };
       }),
   }));

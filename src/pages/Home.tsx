@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useStore } from "../store/useStore";
 
 const Home: React.FC = () => {
   const { themes, addTheme } = useStore();
   const [themeName, setThemeName] = useState("");
-
-  console.log("Thèmes actuels :", themes); // Ajoute ceci pour voir les thèmes dans la console
 
   const handleAddTheme = () => {
     if (themeName.trim()) {
@@ -21,7 +20,11 @@ const Home: React.FC = () => {
       <h2>Thèmes</h2>
       <ul>
         {themes.length > 0 ? (
-          themes.map((theme) => <li key={theme.id}>{theme.name}</li>)
+          themes.map((theme) => (
+            <li key={theme.id}>
+              <Link to={`/theme/${theme.id}`}>{theme.name}</Link> {/* Lien vers la page */}
+            </li>
+          ))
         ) : (
           <p>Aucun thème pour l’instant.</p>
         )}

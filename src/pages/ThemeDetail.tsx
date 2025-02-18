@@ -4,7 +4,7 @@ import { useStore } from "../store/useStore";
 
 const ThemeDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Récupère l'ID du thème depuis l'URL
-  const { themes, flashcards, addFlashcard } = useStore();
+  const { themes, flashcards, addFlashcard, deleteFlashcard } = useStore();
   const theme = themes.find((t) => t.id === Number(id));
 
   const [front, setFront] = useState("");
@@ -33,6 +33,9 @@ const ThemeDetail: React.FC = () => {
             <li key={card.id}>
               <strong>Question :</strong> {card.front} <br />
               <strong>Réponse :</strong> {card.back}
+              <button onClick={() => deleteFlashcard(card.id)} style={{ marginLeft: "10px", color: "red" }}>
+                ❌ Supprimer
+              </button>
             </li>
           ))}
       </ul>

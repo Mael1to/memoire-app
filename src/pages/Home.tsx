@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useStore } from "../store/useStore";
 
 const Home: React.FC = () => {
-  const { themes, addTheme } = useStore();
+  const { themes, addTheme, deleteTheme } = useStore();
   const [themeName, setThemeName] = useState("");
 
   const handleAddTheme = () => {
@@ -22,7 +22,20 @@ const Home: React.FC = () => {
         {themes.length > 0 ? (
           themes.map((theme) => (
             <li key={theme.id}>
-              <Link to={`/theme/${theme.id}`}>{theme.name}</Link> {/* Lien vers la page */}
+              <Link to={`/theme/${theme.id}`}>{theme.name}</Link>
+              <button
+                onClick={() => deleteTheme(theme.id)}
+                style={{
+                  marginLeft: "10px",
+                  color: "red",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                }}
+              >
+                ❌
+              </button>
             </li>
           ))
         ) : (

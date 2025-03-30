@@ -1,23 +1,24 @@
-import React from "react";
-import { useStore } from "../store/useStore";
+import React, { useState } from "react";
+import "./Settings.css";
 
 const Settings: React.FC = () => {
-  const { notificationsEnabled, toggleNotifications } = useStore();
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+
+  const handleToggle = () => {
+    setNotificationsEnabled(!notificationsEnabled);
+    // Tu peux déclencher ici une requête ou une permission navigateur si besoin
+  };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-xl font-bold mb-4">Paramètres</h1>
-      
-      <div className="mb-4">
-        <label className="flex items-center space-x-2">
-          <input 
-            type="checkbox" 
-            checked={notificationsEnabled} 
-            onChange={toggleNotifications} 
-          />
-          <span>Activer les notifications</span>
+    <div className="settings-container">
+      <h1>Paramètres</h1>
+      <label>
+        Activer les notifications
+        <label className="switch">
+          <input type="checkbox" checked={notificationsEnabled} onChange={handleToggle} />
+          <span className="slider"></span>
         </label>
-      </div>
+      </label>
     </div>
   );
 };

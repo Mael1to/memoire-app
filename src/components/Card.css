@@ -24,8 +24,8 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 12px;
-  background-color: #ffffff;
-  color: #333;
+  background-color: var(--card-bg);
+  color: var(--card-text);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,3 +38,4 @@
 .card-face.back {
   transform: rotateY(180deg);
 }
+

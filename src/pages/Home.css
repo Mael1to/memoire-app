@@ -1,0 +1,59 @@
+.home-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  ul.theme-list {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 30px;
+  }
+  
+  ul.theme-list li {
+    margin: 10px 0;
+  }
+  
+  .theme-link {
+    color: #4da6ff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .theme-link:hover {
+    text-decoration: underline;
+  }
+  
+  form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 200px;
+  }
+  
+  button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  

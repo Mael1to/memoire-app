@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useStore } from "../store/useStore";
+import Card from "../components/Card";
+import "../components/Card.css";
 
 const Review: React.FC = () => {
   const { flashcards, reviewFlashcard, deleteFlashcard } = useStore();
@@ -10,13 +12,13 @@ const Review: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   if (dueFlashcards.length === 0) {
-    return <h1>Aucune carte à réviser pour l’instant !</h1>;
+    return <h1 style={{ textAlign: "center" }}>Aucune carte à réviser pour l’instant !</h1>;
   }
 
   const currentCard = dueFlashcards[currentIndex] || null;
 
   if (!currentCard) {
-    return <h1>Erreur : Aucune carte disponible.</h1>;
+    return <h1 style={{ textAlign: "center" }}>Erreur : Aucune carte disponible.</h1>;
   }
 
   const handleReview = (success: boolean) => {
@@ -46,23 +48,37 @@ const Review: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center", padding: "30px" }}>
       <h1>Révision</h1>
       <h2>Carte {currentIndex + 1} / {dueFlashcards.length}</h2>
-      <p><strong>Question :</strong> {currentCard.front}</p>
 
-      {showAnswer ? (
-        <>
-          <p><strong>Réponse :</strong> {currentCard.back}</p>
-          <button onClick={() => handleReview(true)}>✔ Je me souviens</button>
-          <button onClick={() => handleReview(false)}>✖ Oublié</button>
-          <button onClick={handleDelete} style={{ marginLeft: "10px", color: "red" }}>
-            ❌ Supprimer
+      {/* Carte retournable */}
+      <Card
+        question={currentCard.front}
+        answer={currentCard.back}
+        flipped={showAnswer}
+      />
+
+      {/* Boutons d'action */}
+      <div style={{ marginTop: "220px" }}>
+        {showAnswer ? (
+          <>
+            <button onClick={() => handleReview(true)} style={{ marginRight: "10px" }}>
+              ✔ Je me souviens
+            </button>
+            <button onClick={() => handleReview(false)} style={{ marginRight: "10px" }}>
+              ✖ Oublié
+            </button>
+            <button onClick={handleDelete} style={{ color: "red" }}>
+              ❌ Supprimer
+            </button>
+          </>
+        ) : (
+          <button onClick={() => setShowAnswer(true)}>
+            Afficher la réponse
           </button>
-        </>
-      ) : (
-        <button onClick={() => setShowAnswer(true)}>Afficher la réponse</button>
-      )}
+        )}
+      </div>
     </div>
   );
 };

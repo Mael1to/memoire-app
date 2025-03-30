@@ -27,6 +27,7 @@ interface AppState {
   themes: Theme[];
   flashcards: Flashcard[];
   notificationsEnabled: boolean;
+  deleteTheme: (themeId: number) => void;
   addTheme: (name: string) => void;
   addFlashcard: (themeId: number, front: string, back: string) => void;
   reviewFlashcard: (id: number, success: boolean) => void;
@@ -62,6 +63,16 @@ export const useStore = create<AppState>((set) => ({
   themes: loadState("themes"),
   flashcards: loadState("flashcards"),
   notificationsEnabled: loadState("notificationsEnabled") ?? false,
+  
+  deleteTheme: (themeId) =>
+    set((state) => {
+      const newThemes = state.themes.filter((t) => t.id !== themeId);
+      const newFlashcards = state.flashcards.filter((c) => c.themeId !== themeId);
+      saveState("themes", newThemes);
+      saveState("flashcards", newFlashcards);
+      return { themes: newThemes, flashcards: newFlashcards };
+    }),
+  
 
   addTheme: (name) =>
     set((state) => {

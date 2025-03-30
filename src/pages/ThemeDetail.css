@@ -21,7 +21,6 @@
   text-decoration: underline;
 }
 
-/* 🌟 Ajouté : espacement entre les boutons */
 .theme-actions {
   display: flex;
   justify-content: center;

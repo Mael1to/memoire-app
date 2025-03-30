@@ -27,7 +27,6 @@ interface AppState {
   themes: Theme[];
   flashcards: Flashcard[];
   notificationsEnabled: boolean;
-  deleteTheme: (themeId: number) => void;
   addTheme: (name: string) => void;
   addFlashcard: (themeId: number, front: string, back: string) => void;
   reviewFlashcard: (id: number, success: boolean) => void;
@@ -55,7 +54,7 @@ const scheduleNotification = (hour: number, minute: number) => {
         body: "Tu as des cartes à réviser aujourd'hui !",
       });
     }
-    scheduleNotification(hour, minute); // Replanifier pour le jour suivant
+    scheduleNotification(hour, minute);
   }, delay);
 };
 
@@ -73,7 +72,6 @@ export const useStore = create<AppState>((set) => ({
       return { themes: newThemes, flashcards: newFlashcards };
     }),
   
-
   addTheme: (name) =>
     set((state) => {
       const newThemes = [...state.themes, { id: Date.now(), name }];
@@ -122,13 +120,6 @@ export const useStore = create<AppState>((set) => ({
       return { flashcards: newFlashcards };
     }),
 
-  deleteTheme: (id: number) => {
-    set((state) => ({
-      themes: state.themes.filter((theme) => theme.id !== id),
-      flashcards: state.flashcards.filter((card) => card.themeId !== id), 
-    }));
-    },
-    
   toggleNotifications: () =>
     set((state) => {
       const newStatus = !state.notificationsEnabled;

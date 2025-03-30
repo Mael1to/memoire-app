@@ -3,7 +3,7 @@ import { useStore } from "../store/useStore";
 import ImportExportTheme from "../components/ImportExportTheme";
 import ConfirmModal from "../components/ConfirmModal";
 import "./Settings.css";
-			
+
 const Settings: React.FC = () => {
   const {
     notificationsEnabled,
@@ -14,25 +14,6 @@ const Settings: React.FC = () => {
     flashcards,
     deleteTheme,
   } = useStore();
-				
-				const Settings: React.FC = () => {
-  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
-
-  const handleToggle = () => {
-    setNotificationsEnabled(!notificationsEnabled);
-  
-  };
-
-  return (
-    <div className="settings-container">
-      <h1>Paramètres</h1>
-      <label>
-        Activer les notifications
-        <label className="switch">
-          <input type="checkbox" checked={notificationsEnabled} onChange={handleToggle} />
-          <span className="slider"></span>
-        </label>
-      </label>
 
   const [themeToDelete, setThemeToDelete] = useState<number | null>(null);
 
@@ -95,27 +76,6 @@ const Settings: React.FC = () => {
         </label>
       </div>
 
-      {/* Liste des thèmes avec bouton supprimer */}
-      <div className="mb-6">
-        <h2 className="font-semibold mb-2">Thèmes existants :</h2>
-        {themes.length === 0 && <p>Aucun thème.</p>}
-        {themes.map((theme) => (
-          <div
-            key={theme.id}
-            className="flex items-center justify-between border px-3 py-2 mb-2 rounded"
-          >
-            <span>{theme.name}</span>
-            <button
-              onClick={() => setThemeToDelete(theme.id)}
-              className="text-red-500 hover:underline"
-            >
-              🗑 Supprimer
-            </button>
-          </div>
-        ))}
-      </div>
-			
-
       {/* Import/Export */}
       <ImportExportTheme onImport={handleImport} onExport={handleExport} />
 
@@ -130,7 +90,6 @@ const Settings: React.FC = () => {
           }}
         />
       )}
-
     </div>
   );
 };

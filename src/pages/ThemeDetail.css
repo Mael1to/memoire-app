@@ -1,0 +1,128 @@
+.theme-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: var(--text-color);
+}
+
+.theme-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.theme-container a {
+  color: #bb86fc;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.theme-container a:hover {
+  text-decoration: underline;
+}
+
+/* 🌟 Ajouté : espacement entre les boutons */
+.theme-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.danger-button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.danger-button:hover {
+  background-color: #c62828;
+}
+
+.card-list {
+  margin-bottom: 30px;
+}
+
+.card-item {
+  background-color: #1f1f1f;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-item p {
+  margin: 5px 0;
+}
+
+.card-item strong {
+  color: #4da6ff;
+}
+
+.card-item button {
+  background-color: var(--button-danger);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.card-item button:hover {
+  opacity: 0.9;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 40%;
+  min-width: 200px;
+}
+
+button[type="submit"] {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.danger-button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.danger-button:hover {
+  background-color: #c62828;
+  animation: shake 0.3s;
+  box-shadow: 0 0 10px rgba(229, 57, 53, 0.6);
+}

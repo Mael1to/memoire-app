@@ -63,13 +63,41 @@ const Review: React.FC = () => {
       <div style={{ marginTop: "220px" }}>
         {showAnswer ? (
           <>
-            <button onClick={() => handleReview(true)} style={{ marginRight: "10px" }}>
+
+            <button onClick={() => handleReview(true)} 
+              style={{  
+                marginRight: "10px",
+                backgroundColor: "var(--button-bg)",
+                color: "var(--button-text)",
+                padding: "10px 15px",
+                border: "none",
+                borderRadius: "5px",
+                 cursor: "pointer"
+              }}>
               ✔ Je me souviens
             </button>
-            <button onClick={() => handleReview(false)} style={{ marginRight: "10px" }}>
+            <button onClick={() => handleReview(false)} 
+              style={{ 
+                marginRight: "10px",
+                backgroundColor: "var(--button-bg)",
+                color: "var(--button-text)",
+                padding: "10px 15px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer" 
+              }}>
               ✖ Oublié
             </button>
-            <button onClick={handleDelete} style={{ color: "red" }}>
+            <button onClick={handleDelete} 
+              style={{ 
+                marginRight: "10px",
+                backgroundColor: "var(--button-danger)",
+                color: "var(--button-text)",
+                padding: "10px 15px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer" 
+              }}>
               ❌ Supprimer
             </button>
           </>

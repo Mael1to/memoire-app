@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useStore } from "../store/useStore";
 import ImportExportTheme from "../components/ImportExportTheme";
 import ConfirmModal from "../components/ConfirmModal";
-
+import "./Settings.css";
+			
 const Settings: React.FC = () => {
   const {
     notificationsEnabled,
@@ -13,6 +14,25 @@ const Settings: React.FC = () => {
     flashcards,
     deleteTheme,
   } = useStore();
+				
+				const Settings: React.FC = () => {
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+
+  const handleToggle = () => {
+    setNotificationsEnabled(!notificationsEnabled);
+  
+  };
+
+  return (
+    <div className="settings-container">
+      <h1>Paramètres</h1>
+      <label>
+        Activer les notifications
+        <label className="switch">
+          <input type="checkbox" checked={notificationsEnabled} onChange={handleToggle} />
+          <span className="slider"></span>
+        </label>
+      </label>
 
   const [themeToDelete, setThemeToDelete] = useState<number | null>(null);
 
@@ -94,6 +114,7 @@ const Settings: React.FC = () => {
           </div>
         ))}
       </div>
+			
 
       {/* Import/Export */}
       <ImportExportTheme onImport={handleImport} onExport={handleExport} />
@@ -109,6 +130,7 @@ const Settings: React.FC = () => {
           }}
         />
       )}
+
     </div>
   );
 };

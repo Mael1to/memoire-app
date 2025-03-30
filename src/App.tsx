@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import Review from "./pages/Review";
 import Settings from "./pages/Settings";
 import ThemeDetail from "./pages/ThemeDetail";
+import "./App.css";
+
+
 
 function App() {
   return (
@@ -26,3 +29,4 @@ function App() {
 }
 
 export default App;
+

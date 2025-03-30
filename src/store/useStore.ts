@@ -32,6 +32,7 @@ interface AppState {
   addFlashcard: (themeId: number, front: string, back: string) => void;
   reviewFlashcard: (id: number, success: boolean) => void;
   deleteFlashcard: (id: number) => void;
+  deleteTheme: (id: number) => void;
   toggleNotifications: () => void;
   triggerNotification: () => void;
 }
@@ -121,6 +122,13 @@ export const useStore = create<AppState>((set) => ({
       return { flashcards: newFlashcards };
     }),
 
+  deleteTheme: (id: number) => {
+    set((state) => ({
+      themes: state.themes.filter((theme) => theme.id !== id),
+      flashcards: state.flashcards.filter((card) => card.themeId !== id), 
+    }));
+    },
+    
   toggleNotifications: () =>
     set((state) => {
       const newStatus = !state.notificationsEnabled;
